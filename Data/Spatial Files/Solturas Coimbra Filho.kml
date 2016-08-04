@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Solturas Coimbra Filho.kml</name>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Folder>
+		<name>Solturas Coimbra Filho</name>
+		<Placemark>
+			<name>Dona Castorina</name>
+			<LookAt>
+				<longitude>-43.23809965744959</longitude>
+				<latitude>-22.96683328568508</latitude>
+				<altitude>0</altitude>
+				<heading>2.161122470720136e-005</heading>
+				<tilt>43.64843205112808</tilt>
+				<range>290.0256052563727</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-43.23795156014023,-22.96641512327953,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Rio dos Macacos</name>
+			<LookAt>
+				<longitude>-43.23364890395122</longitude>
+				<latitude>-22.96489959610183</latitude>
+				<altitude>0</altitude>
+				<heading>0.003119575534157298</heading>
+				<tilt>29.58399473588541</tilt>
+				<range>1391.211646600897</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-43.23236703927358,-22.96389666178862,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Vista Chinesa</name>
+			<LookAt>
+				<longitude>-43.24938335291118</longitude>
+				<latitude>-22.97335319752935</latitude>
+				<altitude>0</altitude>
+				<heading>-3.121394269993192e-005</heading>
+				<tilt>35.73814205794724</tilt>
+				<range>391.8997414444763</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-43.24945878842978,-22.97326132567614,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

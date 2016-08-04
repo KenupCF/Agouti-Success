@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Landmarks" id="Landmarks">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Landmarks</name>
+  <Placemark>
+	<name>Lago das Fadas</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.284115371006664,-22.951984688325787,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Cercado</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.280868411638131,-22.952207872595874,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Restaurante Esquilos</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.286437988280703,-22.955148696898998,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Casa do Pesquisador</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.285667419433047,-22.955173492431229,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Açude da Solidão</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.288867950438913,-22.961980819701736,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Morro do Archer</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.291099548339304,-22.949794769286697,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Largo do Bom Retiro</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.291469573974076,-22.947425842284748,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Mirante da Cascatinha</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.277774810790454,-22.961277008056214,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Morro do Visconde</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.277843475341236,-22.961357116698785,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Ruínas da Fazenda Sorimã</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.295688629149851,-23.00176239013631,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Pedra da Gávea</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.284744262694758,-22.997596740722248,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Pedra Bonita</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.282863616942791,-22.988689422606992,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Rampa de voo livre</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.278823852538494,-22.988204956054268,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Agulhinha da Gávea</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.277004241942791,-22.985757827758352,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Vista Chinesa</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.249458312987649,-22.973251342772954,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Cachoeira dos Macacos</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.247375488280625,-22.965154647826676,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Mesa do Imperador</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.257846832274787,-22.970272064208515,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Mirante Bela Vista</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.256031036376342,-22.955158233642116,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Parque Lage</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.212100982665312,-22.960397720336378,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Corcovado (Cristo Redentor)</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.210479736327429,-22.951898574828569,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Heliponto</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.198127746581299,-22.946680068969169,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Mirante Dona Marta</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.196418762206285,-22.945016860961349,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Hotel Paineiras</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.217571258544233,-22.947597503661584,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Cachoeira dos Primatas</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.227954864501285,-22.958566665648906,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Mirante do Andaime Pequeno</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.230361938475902,-22.953927993773902,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Museu do Açude</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.282691955565859,-22.963518142699783,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Alto do Cruzeiro</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.283630371093196,-22.961391448974187,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Cascatinha Taunay</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.277442932128345,-22.958547592162663,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Alto da Bandeira</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.274410247802159,-22.957462310790593,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Capela Mayrink</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.278068542479907,-22.956809997558175,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Playground</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.277832031249439,-22.956489562987862,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Barracão (Sede)</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.282741546630312,-22.953805923461502,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Centro de Visitantes</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.279907226561939,-22.956026077270089,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Mirante do Excelsior</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.272701263427166,-22.942483901977102,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Largo da Caveira</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.278713226317798,-22.942876815795479,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Andaraí Maior</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.279567718505312,-22.939886093139215,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Tijuca Mirim</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.283679962157656,-22.941596984862855,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Pico da Tijuca</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.286167144774851,-22.943769454955643,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Bico do Papagaio</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.300899505614709,-22.953857421874606,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Morro da Cocanha</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.30016326904245,-22.958036422729084,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Gruta Bernardo Oliveira</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.291328430175255,-22.952594757079677,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Gruta dos Morcegos</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.291103363036576,-22.95259475707968,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Restaurante Floresta</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.285564422606875,-22.949712753295476,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Cachoeira das Almas</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.28614425659125,-22.948791503905831,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Cercado Novo</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.286046186743391,-22.955879853696555,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Pedra do Conde</name>
+      <Point><altitudeMode>relativeToGround</altitudeMode><coordinates>-43.274143218993579,-22.948865890502489,0</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>
