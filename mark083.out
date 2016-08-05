@@ -1,0 +1,720 @@
+
+   Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:53    Page  001
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+   This version was compiled by GCC version 5.3.0 using the options: 
+     -cpp -iprefix c:\tdm-gcc-64\gcc\bin\../lib/gcc/x86_64-w64-mingw32/5.3.0/ -D_MT
+     -U_REENTRANT -D IEEE -m64 -mtune=generic -march=x86-64 -mthreads -O2
+     -fimplicit-none -fbounds-check -funroll-loops -ftree-vectorize
+     -ffpe-summary=invalid,zero,overflow,underflow -fno-unsafe-math-optimizations
+     -frounding-math -fsignaling-nans -fopenmp.
+
+   This problem will use 3 of 4 possible threads.
+
+
+  INPUT --- proc title ;
+
+     CPU Time in seconds for last procedure was 0.00
+
+
+  INPUT --- proc chmatrix occasions= 30 groups= 1 etype= PoissonMR 
+  INPUT --- icovar = 2 ICMeans NoHist  hist= 14 ;
+
+  INPUT ---    time interval 0.2 0.2 0.2 0.2 2 0.2 0.2 0.2 0.2 2.5 0.2 0.2 
+  INPUT ---    0.2 0.2 2.667 0.2 0.2 0.2  0.2 1.767 0.2 0.2 0.2 0.2 3.167 
+  INPUT ---    0.2 0.2 0.2 0.2 ;
+
+  INPUT ---     icovariates captive sex ;
+
+  INPUT ---    glabel(1)=Group 1;
+
+      Number of unique encounter histories read was 14.
+
+      Number of individual covariates read was 2.
+      Time interval lengths vary and/or not equal to 1.
+
+      Data type number is 115
+      Data type is Poisson Mark Resight with Robust Design                                                             
+
+     CPU Time in seconds for last procedure was 0.00
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:53    Page  002
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+
+  INPUT --- proc estimate link=Parm-Specific NOLOOP varest=2ndPart    ;
+
+
+  INPUT --- model={ alpha(~1 + captive + sex + effort.trapdays + 
+  INPUT --- recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + 
+  INPUT --- sex)Gamma''(~1)Gamma'(~1) };
+
+  INPUT ---    fixed=2;
+  INPUT ---        parm(41)=1 ;
+  INPUT ---        parm(42)=0 ;
+
+  INPUT ---    group=1 alpha    rows=1 cols=30 Square ;
+  INPUT ---        1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 
+  INPUT ---       23 24 25 26 27 28 29 30 ;
+
+  INPUT ---    group=1 sigma    rows=1 cols=30 Square ;
+  INPUT ---        31 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31 
+  INPUT ---       31 31 31 31 31 31 31 31 31 31 31 ;
+
+  INPUT ---    group=1 U    rows=1 cols=30 Square ;
+  INPUT ---        32 32 32 32 32 33 33 33 33 33 34 34 34 34 34 35 35 35 35 
+  INPUT ---       35 36 36 36 36 36 37 37 37 37 37 ;
+
+  INPUT ---    group=1 Phi    rows=29 cols=29 Triang ;
+  INPUT ---        41 41 41 41 38 41 41 41 41 38 41 41 41 41 38 41 41 41 41 
+  INPUT ---       38 41 41 41 41 38 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 
+  INPUT ---       41 41 41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 
+  INPUT ---       41 41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 
+  INPUT ---       41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 
+  INPUT ---       41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 38 41 41 41 41 38 41 41 41 41 38 41 41 41 41 
+  INPUT ---       38 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 
+  INPUT ---       41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 
+  INPUT ---       41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 
+  INPUT ---       41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 
+  INPUT ---       41 ;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:53    Page  003
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  INPUT ---        41 41 41 41 38 41 41 41 41 38 41 41 41 41 38 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 38 41 41 41 41 38 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 38 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 41 ;
+  INPUT ---        41 41 41 41 ;
+  INPUT ---        41 41 41 ;
+  INPUT ---        41 41 ;
+  INPUT ---        41 ;
+
+  INPUT ---    group=1 Gamma''    rows=29 cols=29 Triang ;
+  INPUT ---        42 42 42 42 39 42 42 42 42 39 42 42 42 42 39 42 42 42 42 
+  INPUT ---       39 42 42 42 42 39 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 39 42 42 42 42 39 42 42 42 42 39 42 42 42 42 
+  INPUT ---       39 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 ;
+  INPUT ---        42 42 42 42 39 42 42 42 42 39 42 42 42 42 39 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 ;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:53    Page  004
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  INPUT ---        42 42 42 42 39 42 42 42 42 39 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 39 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 ;
+  INPUT ---        42 42 42 ;
+  INPUT ---        42 42 ;
+  INPUT ---        42 ;
+
+  INPUT ---    group=1 Gamma'    rows=28 cols=28 Triang ;
+  INPUT ---        42 42 42 40 42 42 42 42 40 42 42 42 42 40 42 42 42 42 40 
+  INPUT ---       42 42 42 42 40 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 42 42 42 ;
+  INPUT ---        42 42 42 40 42 42 42 42 40 42 42 42 42 40 42 42 42 42 40 
+  INPUT ---       42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 
+  INPUT ---       42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 40 42 42 42 42 40 42 42 42 42 40 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 40 42 42 42 42 40 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 40 42 42 42 42 ;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:53    Page  005
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  INPUT ---        42 42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 42 ;
+  INPUT ---        42 42 42 42 ;
+  INPUT ---        42 42 42 ;
+  INPUT ---        42 42 ;
+  INPUT ---        42 ;
+
+  INPUT ---    initial  0.8492118 0 0 0 0 -0.3123225 3.139572 0 0 0 0 0 
+  INPUT ---    2.0066797 0 -2.9445172 17.724958  ;
+
+  INPUT ---    design matrix constraints=42 covariates=16;
+  INPUT ---        1 captive sex 96 0.186046511627907 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 96 0.127659574468085 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 114 0.08 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 120 0.166666666666667 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 115 0.169230769230769 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 126 0.0615384615384615 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 126 0.0776699029126214 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 126 0.170212765957447 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 114 0.0666666666666667 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 126 0.0894308943089431 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 139 0.08 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 168 0.135135135135135 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 180 0.213740458015267 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 174 0.0869565217391304 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 173 0.131428571428571 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 166 0.167441860465116 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 172 0.155 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 166 0.168831168831169 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 171 0.231182795698925 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 151 0.224489795918367 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 192 0.125827814569536 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 185 0.201612903225806 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 198 0.244604316546763 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 198 0.282828282828283 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 195 0.314516129032258 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 192 0.137254901960784 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 192 0.266129032258065 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 198 0.198581560283688 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 198 0.293333333333333 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        1 captive sex 198 0.202453987730061 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:53    Page  006
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  INPUT ---        0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 1 sex 0 0;
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0;
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1;
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+  INPUT ---        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+
+  INPUT ---    links=42;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:53    Page  007
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Log;
+
+  INPUT ---    Logit;
+
+  INPUT ---    Logit;
+
+  INPUT ---    Logit;
+
+  INPUT ---    Logit;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:53    Page  008
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+  INPUT ---    Logit;
+  INPUT ---       blabel(1)=alpha:(Intercept);
+  INPUT ---       blabel(2)=alpha:captive;
+  INPUT ---       blabel(3)=alpha:sex;
+  INPUT ---       blabel(4)=alpha:effort.trapdays;
+  INPUT ---       blabel(5)=alpha:recordloss.agout.total;
+  INPUT ---       blabel(6)=sigma:(Intercept);
+  INPUT ---       blabel(7)=U:(Intercept);
+  INPUT ---       blabel(8)=U:sample_monthB;
+  INPUT ---       blabel(9)=U:sample_monthC;
+  INPUT ---       blabel(10)=U:sample_monthD;
+  INPUT ---       blabel(11)=U:sample_monthE;
+  INPUT ---       blabel(12)=U:sample_monthF;
+  INPUT ---       blabel(13)=Phi:(Intercept);
+  INPUT ---       blabel(14)=Phi:sex;
+  INPUT ---       blabel(15)=GammaDoublePrime:(Intercept);
+  INPUT ---       blabel(16)=GammaPrime:(Intercept);
+  INPUT ---       rlabel(1)=alpha g1 a0 t1;
+  INPUT ---       rlabel(2)=alpha g1 a0.2 t1.2;
+  INPUT ---       rlabel(3)=alpha g1 a0.4 t1.4;
+  INPUT ---       rlabel(4)=alpha g1 a0.6 t1.6;
+  INPUT ---       rlabel(5)=alpha g1 a0.8 t1.8;
+  INPUT ---       rlabel(6)=alpha g1 a2.8 t3.8;
+  INPUT ---       rlabel(7)=alpha g1 a3 t4;
+  INPUT ---       rlabel(8)=alpha g1 a3.2 t4.2;
+  INPUT ---       rlabel(9)=alpha g1 a3.4 t4.4;
+  INPUT ---       rlabel(10)=alpha g1 a3.6 t4.6;
+  INPUT ---       rlabel(11)=alpha g1 a6.1 t7.1;
+  INPUT ---       rlabel(12)=alpha g1 a6.3 t7.3;
+  INPUT ---       rlabel(13)=alpha g1 a6.5 t7.5;
+  INPUT ---       rlabel(14)=alpha g1 a6.7 t7.7;
+  INPUT ---       rlabel(15)=alpha g1 a6.9 t7.9;
+  INPUT ---       rlabel(16)=alpha g1 a9.567 t10.567;
+  INPUT ---       rlabel(17)=alpha g1 a9.767 t10.767;
+  INPUT ---       rlabel(18)=alpha g1 a9.967 t10.967;
+  INPUT ---       rlabel(19)=alpha g1 a10.167 t11.167;
+  INPUT ---       rlabel(20)=alpha g1 a10.367 t11.367;
+  INPUT ---       rlabel(21)=alpha g1 a12.134 t13.134;
+  INPUT ---       rlabel(22)=alpha g1 a12.334 t13.334;
+  INPUT ---       rlabel(23)=alpha g1 a12.534 t13.534;
+  INPUT ---       rlabel(24)=alpha g1 a12.734 t13.734;
+  INPUT ---       rlabel(25)=alpha g1 a12.934 t13.934;
+  INPUT ---       rlabel(26)=alpha g1 a16.101 t17.101;
+  INPUT ---       rlabel(27)=alpha g1 a16.301 t17.301;
+  INPUT ---       rlabel(28)=alpha g1 a16.501 t17.501;
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:53    Page  009
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+  INPUT ---       rlabel(29)=alpha g1 a16.701 t17.701;
+  INPUT ---       rlabel(30)=alpha g1 a16.901 t17.901;
+  INPUT ---       rlabel(31)=sigma g1 a0 t1;
+  INPUT ---       rlabel(32)=U g1 a0 t1;
+  INPUT ---       rlabel(33)=U g1 a2.8 t3.8;
+  INPUT ---       rlabel(34)=U g1 a6.1 t7.1;
+  INPUT ---       rlabel(35)=U g1 a9.567 t10.567;
+  INPUT ---       rlabel(36)=U g1 a12.134 t13.134;
+  INPUT ---       rlabel(37)=U g1 a16.101 t17.101;
+  INPUT ---       rlabel(38)=Phi g1 c1 a0.8 t1.8;
+  INPUT ---       rlabel(39)=Gamma'' g1 c1 a0.8 t1.8;
+  INPUT ---       rlabel(40)=Gamma' g1 c1 a0.8 t1.8;
+  INPUT ---       rlabel(41)=Phi g1 c1 a0 t1;
+  INPUT ---       rlabel(42)=Gamma'' g1 c1 a0 t1;
+
+ Link Function Used is PARM-SPECIFIC
+
+ Variance Estimation Procedure Used is 2ndPart 
+
+ M(t+1):
+ Group=Group 1                                                                         
+       3      3      3      2      3      5      5      5      2      5      5
+       4      4      4      4     10      7      7      7      5      5      5
+       5      3      4      5      5      5      4      5
+
+
+ -2logL(saturated) = -0.0000000    
+ Effective Sample Size = 169
+ Results from first iteration:
+  -2logL Initial { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = 1138.4459     
+  Penalty Initial { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = -0.0000000    
+
+ Number of function evaluations was 30 for 16 parameters.
+ Time for numerical optimization was 4.33 seconds.
+ -2logL { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = 1053.6726     
+ Penalty { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = -0.0000000    
+
+   * *  WARNING  * *   Numerical underflow occurred during optimization of this model. 
+     IEEE flag status at end of optimization:
+     overflow       F
+     divide by zero F
+     invalid        F
+     underflow      T
+     inexact        T
+
+ Gradient { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) }:
+ -0.7485378E-03 0.3955397E-03 0.3465293E-03-0.1780776E-03 0.7678533E-04
+ -0.2754450E-03-0.8936623E-04-0.1336555E-03 0.2390477E-03-0.1454627E-03
+ -0.1669319E-03 0.1231595E-03-0.3775481E-03-0.3402914E-03 0.2882264E-04
+   0.000000    
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:58    Page  010
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+ S Vector { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) }:
+   5633.741      393.1182      305.5988      288.0426      254.0616    
+   210.8971      126.7347      46.98364      28.96123      10.93363    
+   10.58276      4.833479      2.640221     0.9500193     0.2786639    
+  0.2702012E-08
+ Time to compute number of parameters was 2.83 seconds.
+   Threshold =  0.3400000E-06     Condition index =  0.4796124E-12     New Threshold =  0.1080805E-07
+ New Guessimate of Estimated Parameters { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = 15          
+ Conditioned S Vector { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) }:
+   1.000000     0.6977924E-01 0.5424439E-01 0.5112812E-01 0.4509643E-01
+  0.3743464E-01 0.2249565E-01 0.8339688E-02 0.5140676E-02 0.1940740E-02
+  0.1878461E-02 0.8579519E-03 0.4686444E-03 0.1686303E-03 0.4946339E-04
+  0.4796124E-12
+ Number of Estimated Parameters { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = 15          
+ DEVIANCE { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = 1053.6726                     
+ DEVIANCE Degrees of Freedom { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = -1            
+ c-hat { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = 1.0000000                     
+ AIC { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = 1083.6726                  
+ AICc { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = 1086.8099                    
+ BIC { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = 1130.6211                    
+ Pearson Chisquare { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) } = 0.2210761E+033             
+
+   * *  WARNING  * *   Numerical underflow occurred during variance-covariance calculation of this model. 
+     IEEE flag status at end of variance-covariance calculation:
+     overflow       F
+     divide by zero F
+     invalid        F
+     underflow      T
+     inexact        T
+
+
+
+ PARM-SPECIFIC Link Function Parameters of { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) }
+                                                              95% Confidence Interval
+ Parameter                    Beta         Standard Error      Lower           Upper
+ -------------------------  --------------  --------------  --------------  --------------
+    1:alpha:(Intercept)     0.3669069       0.3514515       -0.3219381      1.0557519     
+    2:alpha:captive         0.2646572       0.1075429       0.0538731       0.4754412     
+    3:alpha:sex             0.5091346       0.2026051       0.1120285       0.9062407     
+    4:alpha:effort.trapday  0.0039775       0.0017851       0.4786655E-003  0.0074764     
+    5:alpha:recordloss.ago  -2.8495093      0.5499188       -3.9273501      -1.7716684    
+    6:sigma:(Intercept)     -0.8160507      0.1423398       -1.0950367      -0.5370648    
+    7:U:(Intercept)         2.5620073       0.1399599       2.2876858       2.8363288     
+    8:U:sample_monthB       0.3609538       0.1298444       0.1064588       0.6154489     
+    9:U:sample_monthC       0.4267464       0.1487128       0.1352694       0.7182235     
+   10:U:sample_monthD       0.8757282       0.1471651       0.5872846       1.1641717     
+   11:U:sample_monthE       0.3620743       0.1678713       0.0330465       0.6911021     
+   12:U:sample_monthF       0.6615549       0.1727648       0.3229359       1.0001739     
+   13:Phi:(Intercept)       1.1078319       1.2983243       -1.4368837      3.6525475     
+   14:Phi:sex               1.0045202       1.4122206       -1.7634322      3.7724726     
+   15:GammaDoublePrime:(In  -2.9443597      1.0259679       -4.9552569      -0.9334625    
+   16:GammaPrime:(Intercep  17.724958       0.0000000       17.724958       17.724958     
+
+
+ Real Function Parameters of { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) }
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:58    Page  011
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+      Following estimates based on unstandardized individual covariate values:
+          Variable   Value         
+          ---------  ------------- 
+          CAPTIVE    0.2142857     
+          SEX        0.8461538     
+                                                               95% Confidence Interval
+  Parameter                  Estimate       Standard Error      Lower           Upper
+ --------------------------  --------------  --------------  --------------  --------------
+     1:alpha g1 a0 t1        2.0261313       0.2943617       1.5263204       2.6896109                           
+     2:alpha g1 a0.2 t1.2    2.3928911       0.3220066       1.8403052       3.1114012                           
+     3:alpha g1 a0.4 t1.4    2.9443983       0.3202442       2.3806027       3.6417169                           
+     4:alpha g1 a0.6 t1.6    2.3556395       0.2509348       1.9128833       2.9008762                           
+     5:alpha g1 a0.8 t1.8    2.2924431       0.2606611       1.8357858       2.8626953                           
+     6:alpha g1 a2.8 t3.8    3.2551596       0.3240279       2.6794673       3.9545412                           
+     7:alpha g1 a3 t4        3.1089176       0.3023171       2.5705727       3.7600058                           
+     8:alpha g1 a3.2 t4.2    2.3882786       0.2376279       1.9660721       2.9011524                           
+     9:alpha g1 a3.4 t4.4    3.0584184       0.3354738       2.4683518       3.7895422                           
+    10:alpha g1 a3.6 t4.6    3.0064547       0.2887617       2.4916395       3.6276396                           
+    11:alpha g1 a6.1 t7.1    3.2522369       0.2874347       2.7358820       3.8660456                           
+    12:alpha g1 a6.3 t7.3    3.1192222       0.2375752       2.6872446       3.6206408                           
+    13:alpha g1 a6.5 t7.5    2.6151661       0.2012758       2.2494803       3.0402994                           
+    14:alpha g1 a6.7 t7.7    3.6646555       0.3367471       3.0618134       4.3861915                           
+    15:alpha g1 a6.9 t7.9    3.2156621       0.2546409       2.7540371       3.7546636                           
+    16:alpha g1 a9.567 t10.  2.8223512       0.2044093       2.4493006       3.2522207                           
+    17:alpha g1 a9.767 t10.  2.9948338       0.2242804       2.5865147       3.4676120                           
+    18:alpha g1 a9.967 t10.  2.8112000       0.2034935       2.4398068       3.2391276                           
+    19:alpha g1 a10.167 t11  2.4008615       0.1868138       2.0617350       2.7957695                           
+    20:alpha g1 a10.367 t11  2.2599632       0.1924835       1.9130806       2.6697431                           
+    21:alpha g1 a12.134 t13  3.5238918       0.3419365       2.9148700       4.2601602                           
+    22:alpha g1 a12.334 t13  2.7614969       0.2187292       2.3649817       3.2244922                           
+    23:alpha g1 a12.534 t13  2.5727529       0.2329663       2.1551450       3.0712819                           
+    24:alpha g1 a12.734 t13  2.3072514       0.2209312       1.9132531       2.7823863                           
+    25:alpha g1 a12.934 t13  2.0830424       0.2125478       1.7063461       2.5428990                           
+    26:alpha g1 a16.101 t17  3.4109963       0.3209382       2.8377050       4.1001075                           
+    27:alpha g1 a16.301 t17  2.3626323       0.2109761       1.9839733       2.8135618                           
+    28:alpha g1 a16.501 t17  2.9332727       0.2656966       2.4570072       3.5018574                           
+    29:alpha g1 a16.701 t17  2.2392091       0.2192859       1.8489865       2.7117870                           
+    30:alpha g1 a16.901 t17  2.9010834       0.2619822       2.4313480       3.4615715                           
+    31:sigma g1 a0 t1        0.4421745       0.0629390       0.3349953       0.5836448                           
+    32:U g1 a0 t1            12.961810       1.8141342       9.8652173       17.030391                           
+    33:U g1 a2.8 t3.8        18.596273       2.0616099       14.974308       23.094313                           
+    34:U g1 a6.1 t7.1        19.860916       1.6530827       16.876104       23.373640                           
+    35:U g1 a9.567 t10.567   31.116415       2.2965728       26.930851       35.952495                           
+    36:U g1 a12.134 t13.134  18.617121       1.6324492       15.682529       22.100848                           
+    37:U g1 a16.101 t17.101  25.117435       2.2717874       21.044679       29.978386                           
+    38:Phi g1 c1 a0.8 t1.8   0.8762958       0.0441716       0.7611775       0.9402780                           
+    39:Gamma'' g1 c1 a0.8 t  0.0500038       0.0487370       0.0069970       0.2822228                           
+    40:Gamma' g1 c1 a0.8 t1  1.0000000       0.0000000       1.0000000       1.0000000                           
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:58    Page  012
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+    41:Phi g1 c1 a0 t1       1.0000000       0.0000000       1.0000000       1.0000000       Fixed               
+    42:Gamma'' g1 c1 a0 t1   0.0000000       0.0000000       0.0000000       0.0000000       Fixed               
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:58    Page  013
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+
+
+                      Estimates of Derived Parameters
+ Population Estimates of { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) }
+                                                95% Confidence Interval
+ Grp. Occ.   N-hat           Standard Error      Lower           Upper
+ ---- ----   --------------  --------------  --------------  --------------
+   1     1   15.961810       1.8141351       12.783434       19.930433     
+   1     2   15.961810       1.8141351       12.783434       19.930433     
+   1     3   15.961810       1.8141351       12.783434       19.930433     
+   1     4   15.122614       1.8475462       11.912905       19.197119     
+   1     5   15.961810       1.8141351       12.783434       19.930433     
+   1     6   23.596273       2.0616106       19.889037       27.994522     
+   1     7   23.596273       2.0616106       19.889037       27.994522     
+   1     8   23.596273       2.0616106       19.889037       27.994522     
+   1     9   20.743946       2.0913140       17.033043       25.263326     
+   1    10   23.596273       2.0616106       19.889037       27.994522     
+   1    11   25.122997       1.6895060       22.023796       28.658320     
+   1    12   24.081218       1.6836533       21.000886       27.613363     
+   1    13   24.194977       1.6888421       21.104802       27.737617     
+   1    14   24.031071       1.6815760       20.954720       27.559059     
+   1    15   24.098000       1.6855076       21.014361       27.634131     
+   1    16   38.901831       2.4068965       34.463125       43.912224     
+   1    17   38.682116       2.3686160       34.311249       43.609782     
+   1    18   38.908231       2.4075785       34.468300       43.920080     
+   1    19   39.122859       2.4185020       34.662518       44.157154     
+   1    20   37.098359       2.4308080       32.631711       42.176405     
+   1    21   22.845033       1.6680256       19.802632       26.354856     
+   1    22   24.108282       1.6944204       21.009379       27.664276     
+   1    23   24.122812       1.7026809       21.009726       27.697176     
+   1    24   21.980868       1.6814821       18.924473       25.530886     
+   1    25   23.318509       1.7239362       20.176975       26.949176     
+   1    26   30.378875       2.3190553       26.162910       35.274213     
+   1    27   30.723540       2.3594089       26.436153       35.706252     
+   1    28   30.494080       2.3377047       26.245569       35.430320     
+   1    29   29.697594       2.3587487       25.422550       34.691528     
+   1    30   30.503835       2.3389521       26.253126       35.442787     
+ Mean Resighting Rate Estimates of { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) }
+                                                95% Confidence Interval
+ Grp. Occ.   Lambda-hat      Standard Error      Lower           Upper
+ ---- ----   --------------  --------------  --------------  --------------
+   1     1   2.2342092       0.3115092       1.7022053       2.9324845     
+   1     2   2.6386342       0.3391420       2.0531497       3.3910779     
+   1     3   3.2467796       0.3291457       2.6630558       3.9584517     
+   1     4   2.5975570       0.2554274       2.1432017       3.1482349     
+   1     5   2.5278705       0.2681793       2.0544831       3.1103342     
+   1     6   3.5894552       0.3282460       3.0015738       4.2924777     
+   1     7   3.4281945       0.3044761       2.8814614       4.0786657     
+   1     8   2.6335480       0.2385895       2.2058792       3.1441319     
+   1     9   3.3725093       0.3455304       2.7603825       4.1203778     
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:59    Page  014
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+   1    10   3.3152091       0.2898003       2.7941068       3.9334972     
+   1    11   3.9610491       0.2880703       3.4354721       4.5670317     
+   1    12   3.6722949       0.2231145       3.2603822       4.1362482     
+   1    13   3.3341756       0.1923526       2.9779783       3.7329779     
+   1    14   4.7552840       0.3414810       4.1316964       5.4729882     
+   1    15   4.4813316       0.2518354       4.0142953       5.0027045     
+   1    16   3.6349193       0.1918535       3.2779188       4.0308010     
+   1    17   4.2270320       0.2185171       3.8199799       4.6774590     
+   1    18   3.8833937       0.1949816       3.5196502       4.2847289     
+   1    19   3.2786498       0.1843273       2.9368174       3.6602701     
+   1    20   3.0143981       0.1959171       2.6542088       3.4234668     
+   1    21   5.3072987       0.3598676       4.6475270       6.0607328     
+   1    22   3.4094665       0.2091920       3.0234863       3.8447211     
+   1    23   3.1960581       0.2325509       2.7717901       3.6852674     
+   1    24   3.1276434       0.2307312       2.7071154       3.6134970     
+   1    25   4.0000998       0.2623694       3.5180239       4.5482346     
+   1    26   4.1387064       0.3222403       3.5537661       4.8199263     
+   1    27   2.6052679       0.2026664       2.2373565       3.0336787     
+   1    28   3.7872740       0.2675491       3.2981314       4.3489608     
+   1    29   3.1205402       0.2328560       2.6964959       3.6112687     
+   1    30   3.7506817       0.2637278       3.2683682       4.3041703     
+ Pr(Captured 1 or more times) of { alpha(~1 + captive + sex + effort.trapdays + recordloss.agout.total)sigma(~1)U(~sample_month)Phi(~1 + sex)Gamma''(~1)Gamma'(~1) }
+                                                95% Confidence Interval
+ Grp. Occ.      p*-hat       Standard Error      Lower           Upper
+ ---- ----   --------------  --------------  --------------  --------------
+   1     1   0.2942657       0.0107662       0.2736136       0.3157990     
+   1     2   0.3048445       0.0083992       0.2886358       0.3215519     
+   1     3   0.3151336       0.0054960       0.3044620       0.3260038     
+   1     4   0.4627906       0.0110439       0.4412279       0.4844933     
+   1     5   0.3023181       0.0078452       0.2871667       0.3179125     
+   1     6   0.1900601       0.0029486       0.1843481       0.1959067     
+   1     7   0.1889297       0.0031032       0.1829223       0.1950872     
+   1     8   0.1806747       0.0043292       0.1723441       0.1893158     
+   1     9   0.4656200       0.0101764       0.4457397       0.4856102     
+   1    10   0.1880498       0.0032232       0.1818136       0.1944491     
+   1    11   0.1929705       0.0020493       0.1889857       0.1970189     
+   1    12   0.2394966       0.0028105       0.2340315       0.2450485     
+   1    13   0.2373137       0.0030614       0.2313658       0.2433662     
+   1    14   0.2447463       0.0017897       0.2412555       0.2482712     
+   1    15   0.2440950       0.0017311       0.2407181       0.2475039     
+   1    16   0.1342822       0.0019135       0.1305757       0.1380772     
+   1    17   0.1382245       0.0011887       0.1359111       0.1405708     
+   1    18   0.1354917       0.0018095       0.1319841       0.1390777     
+   1    19   0.1324785       0.0021060       0.1284049       0.1366611     
+   1    20   0.1788424       0.0046194       0.1699670       0.1880762     
+   1    21   0.2463425       0.0013160       0.2437723       0.2489310     
+   1    22   0.1871133       0.0029527       0.1813948       0.1929696     
+   1    23   0.1867801       0.0031758       0.1806353       0.1930848     
+   1    24   0.3122179       0.0051034       0.3023037       0.3223070     
+   1    25   0.2415534       0.0024669       0.2367513       0.2464215     
+
+  Program  MARK  - Survival Rate Estimation with Capture-Recapture Data
+   gfortran(Win64) Vers. 8.1 Mar 2016    5-Aug-2016 15:52:59    Page  015
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+   1    26   0.1929935       0.0021966       0.1887247       0.1973353     
+   1    27   0.1783769       0.0044400       0.1698401       0.1872461     
+   1    28   0.1915704       0.0023354       0.1870348       0.1961894     
+   1    29   0.2324208       0.0041465       0.2243929       0.2406469     
+   1    30   0.1913571       0.0023682       0.1867583       0.1960419     
+
+ Attempted ordering of parameters by estimatibility:
+   1  7 10 12 11  9  2  6  8  3 13  4  5 15 14 16
+ Beta number 16 is a singular value.
+
+     CPU Time in seconds for last procedure was 7.39
+
+
+  INPUT --- proc stop;
+
+   * *  WARNING  * *   Numerical underflow occurred during final processing of this model. 
+     IEEE flag status at final processing of this model:
+     overflow       F
+     divide by zero F
+     invalid        F
+     underflow      T
+     inexact        T
+
+
+     CPU Time in minutes for this job was 0.12
+
+     Time Start = 15:52:53.428   Time End = 15:52:59.173
+
+     Wall Clock Time in minutes for this job was 0.10
+
+
+          E X E C U T I O N   S U C C E S S F U L 

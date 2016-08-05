@@ -6,15 +6,16 @@
 	require(RMark)
 	require(msm)
 	require(combinat)
+	require(gtools)
 ##'Data-management' packages
 	require(lubridate)
-	# require(gtools)
 	require(gdata)
 	require(stringr)
 	require(zoo)
 	require(dplyr)
 	require(magrittr)
 	require(devtools)
+	require(reshape2)
 ###Spatial tools packages
 	require(maptools)
 	require(rgdal)
@@ -24,7 +25,7 @@
 	devtools::source_url('https://raw.githubusercontent.com/KenupCF/Kenup-Repo/master/point2interval%20v1.1.R')
 	##Define temporally independent records
 	devtools::source_url('https://raw.githubusercontent.com/KenupCF/Kenup-Repo/master/Independent_records%20v3.0.R')
-	##Quick functions to make life easier (:
+	##Quick functions to make life easier
 	devtools::source_url('https://raw.githubusercontent.com/KenupCF/Kenup-Repo/master/Aux%20Functions.R')
 	
 {#@#remove this
@@ -34,20 +35,20 @@ setwd("C:\\Users\\Kenup\\Dropbox\\03-Trabalho\\01-Science\\01-Artigos sendo Escr
 }		
 ##Importing and formatting data##
 	##Photographic records
-		fotos<-read.csv(".\\Data\\Registros Armadilhagem Fotográfica.csv",T)
+		photos<-read.csv(".\\Data\\Registros Armadilhagem Fotográfica.csv",T)
 	##Capture information
-		captures<-read.csv(".\\Data\\Capturas Triagem.csv",header=TRUE)
+		captures<-read.csv(".\\Data\\Live Capture Records.csv",header=TRUE)
 	##Individual information
-		dossie<-read.csv(".\\Data\\Dossiê Cutias Resumido.csv",T,row.names=1)
-		dossie$indiv<-rownames(dossie)
+		indiv.summ<-read.csv(".\\Data\\Individual Summary.csv",T,row.names=1)
+		indiv.summ$indiv<-rownames(indiv.summ)
 	##Resighting interval information
-		interval_cov<-read.csv(".\\Data\\Informações de Intervalo.csv",T)
-		no_int<-nrow(interval_cov)
+		interval_info<-read.csv(".\\Data\\Resighting Intervals Information.csv",T)
+		no_int<-nrow(interval_info)
 	##Trapping sessions information
-		trapping_sessions<-read.csv(".\\Data\\Sessões de Captura.csv",T)
+		trapping_sessions<-read.csv(".\\Data\\Trapping Sessions.csv",T)
 	##Camera Trapping Effort
-		trap_hist_1314<-read.csv(".\\Data\\Esforço 2013-2014.csv",T)
-		trap_hist_15<-read.csv(".\\Data\\Esforço 2015.csv",T)
+		trap_hist_1314<-read.csv(".\\Data\\Camera Trap Effort 2013-2014.csv",T)
+		trap_hist_15<-read.csv(".\\Data\\Camera Trap Effort 2015.csv",T)
 		trap_hist<-rbind(trap_hist_1314,trap_hist_15)
 	##Spatial data###
 		spatial.data.wd<-'.\\Data\\Spatial Files'
@@ -63,11 +64,11 @@ setwd("C:\\Users\\Kenup\\Dropbox\\03-Trabalho\\01-Science\\01-Artigos sendo Escr
 		
 ##Formatting Time Data as POSIXct##
 tz<-'Etc/GMT-3' #Study Area timezone code
-fotos$horario_fim<-as.POSIXct(paste(fotos$data, substr(fotos$horario_fim,1,5)),format="%d/%m/%Y %H:%M", tz=tz)
-fotos$horario_inicio<-as.POSIXct(paste(fotos$data, substr(fotos$horario_inicio,1,5)) ,format="%d/%m/%Y %H:%M", tz=tz)
-fotos$data%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
-dossie$date.rm%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
-dossie$date.mark.rel%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
+photos$time_end<-as.POSIXct(paste(photos$date, substr(photos$time_end,1,5)),format="%d/%m/%Y %H:%M", tz=tz)
+photos$time_start<-as.POSIXct(paste(photos$date, substr(photos$time_start,1,5)) ,format="%d/%m/%Y %H:%M", tz=tz)
+photos$date%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
+indiv.summ$date.rm%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
+indiv.summ$date.mark.rel%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
 captures$date.capture%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
 captures$date.handling%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
 captures$date.release%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
@@ -75,16 +76,16 @@ captures$month<-myear(captures$date.capture)
 trapping_sessions$start%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
 trapping_sessions$end%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
 trapping_sessions$month<-myear(trapping_sessions[,c('start')])%>%as.character
-interval_cov$start%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
-interval_cov$end%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)        
-interval_cov<-merge(interval_cov,
+interval_info$start%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)
+interval_info$end%<>%as.POSIXct(format="%d/%m/%Y", tz=tz)        
+interval_info<-merge(interval_info,
 	data.frame(									
-		month=yearmon(tapply(myear(interval_cov$start),interval_cov$sample_month,function(x){
+		month=yearmon(tapply(myear(interval_info$start),interval_info$sample_month,function(x){
 			x<-x[1]
 			return(x)})),
-	sample_month=unique(interval_cov$sample_month)),
+	sample_month=unique(interval_info$sample_month)),
 	by="sample_month")
-trap_hist$data<-as.POSIXct(trap_hist$data,format="%d/%m/%Y", tz=tz) 
+trap_hist$date<-as.POSIXct(trap_hist$date,format="%d/%m/%Y", tz=tz) 
 
 ##Formating Capture Information##
 captures$age<-NA
@@ -98,44 +99,44 @@ captures$age[captures$weight.kg >= 2]<-"Adult"
 ###hese individuals were considered as 'Unmarked' for the purpose of the analysis
 #####
 unusable.ind<-c("sloth","chico","primo","neguinha","negrinha") #vector of unusable individuals
-fotos$true.indiv<-fotos$individuo
-fotos$individuo[fotos$individuo%in%unusable.ind]<-"unmark"
+photos$true.indiv<-photos$indiv
+photos$indiv[photos$indiv%in%unusable.ind]<-"unmark"
 
 #####
 ##Photographic data were formatted with 'start' and 'end' times for each record;
 ##To facilitade data management, we transformed each record into a series of records
 ##spaced one minute apart, from its starting to ending time.
 #####
-fotos<-interval2point(fotos,fotos$horario_inicio,fotos$horario_fim)		
+photos<-interval2point(photos,photos$time_start,photos$time_end)		
 
 #Defining primary interval of each record
-	fotos$interval<-sapply(fotos$time, function(x){
-		if(any(y <- (x>=interval_cov$start & x<=interval_cov$end+86399))>0) {interval_cov$interval[which(y)]} 
+	photos$interval<-sapply(photos$time, function(x){
+		if(any(y <- (x>=interval_info$start & x<=interval_info$end+86399))>0) {interval_info$interval[which(y)]} 
 		else {NA}})
 #Appending interval information to each record
-	fotos<-merge(fotos,interval_cov[,c("interval","sample_month","start")],
+	photos<-merge(photos,interval_info[,c("interval","sample_month","start")],
 		by="interval",all.x=TRUE)
 		
 
 #Assigning primary interval to trapping effort data
-trap_hist$interval<-sapply(trap_hist$data, function(x){
-	if(any(y <- (x>=interval_cov$start & x<=interval_cov$end+86399))>0) {interval_cov$interval[which(y)]} 
+trap_hist$interval<-sapply(trap_hist$date, function(x){
+	if(any(y <- (x>=interval_info$start & x<=interval_info$end+86399))>0) {interval_info$interval[which(y)]} 
 	else {NA}})
 
 {#@# rethink this
 # age.struct<-data.frame(idade=c("filhote","juvenil","adulto","desconhecida"),age=c(0,1,1,"desconhecida"))
-		# fotos<-merge(fotos,age.struct,by="idade",all.x=TRUE)
-			#gambiarra, trocando NA's por 1 na idade
-			# fotos[is.na(fotos$age),"age"]<-1
+		# photos<-merge(photos,age.struct,by="idade",all.x=TRUE)
+			# gambiarra, trocando NA's por 1 na idade
+			# photos[is.na(photos$age),"age"]<-1
 }
 
 ##Removing unused stations
 	#Character vector containing discarded stations
 	unused.st<-c("AFV25")
 	#Removing such stations from effort records
-	trap_hist<-trap_hist[!trap_hist$estacao%in%unused.st,]
+	trap_hist<-trap_hist[!trap_hist$station%in%unused.st,]
 	#Removing photographic records from the same stations
-	fotos<-fotos[!fotos$estacao%in%unused.st,]
+	photos<-photos[!photos$station%in%unused.st,]
 	#Removing stations' coordinates from spatial object
 	sp.obj$camera.traps<-sp.obj$camera.traps[				
 		!sp.obj$camera.traps$label%in%unused.st,]
@@ -153,8 +154,8 @@ trap_hist$interval<-sapply(trap_hist$data, function(x){
 		sp.obj$camera.traps<-sp.obj$camera.traps[order(sp.obj$camera.traps$label,decreasing=FALSE),]
 		
 ##Removing subscript information from stations
-	trap_hist$estacao<-factor(substr(trap_hist$estacao,1,5))
-	fotos$estacao<-factor(substr(fotos$estacao,1,5))
+	trap_hist$station<-factor(substr(trap_hist$station,1,5))
+	photos$station<-factor(substr(photos$station,1,5))
 	sp.obj$camera.traps@data$label<-factor(substr(sp.obj$camera.traps@data$label,1,5))
 				
 ##Spatial Analysis
@@ -180,42 +181,44 @@ trap_hist$interval<-sapply(trap_hist$data, function(x){
 ####
 
 ###Defining individuals born in the captivity
-	dossie%<>%
+	indiv.summ%<>%
 		dplyr::mutate(captive=origin!='pnt')
 ###Defining release cohort (concerning mark resighting analyses)
-	dossie$true.cohort<-NA	
+	indiv.summ$true.cohort<-NA	
 	##Loop over each individuals
-		for (n in 1:nrow(dossie)){
+		for (n in 1:nrow(indiv.summ)){
 			##Define 'true.cohort' as the starting date of the first primary interval after marking
-			dossie$true.cohort[n]<-interval_cov$start[
-				min(which(interval_cov$start>dossie$date.mark.rel[n]))]
+			indiv.summ$true.cohort[n]<-interval_info$start[
+				min(which(interval_info$start>indiv.summ$date.mark.rel[n]))]
 		} 
 	##Converting to POSIXct		
-	dossie$true.cohort%<>%as.POSIXct(origin="1970-01-01", tz=tz(interval_cov$start[1])) 
+	indiv.summ$true.cohort%<>%as.POSIXct(origin="1970-01-01", tz=tz(interval_info$start[1])) 
 	
 ###Delaying inclusion of individuals recently released in the analysis
 #Defining time (in days) to delay inclusion in the analysis
 	y<-45 
 	##Defining which individuals are to be post-poned (logic vector)
-	post.poneds<-dossie$captive==T &  							#captives individuals WHICH
-		!is.na(dossie$date.mark.rel) &							#have a date of mark and release AND
-		dossie$date.mark.rel >= min(interval_cov$start) & 		#this date falls between the start and
-		dossie$date.mark.rel < max(interval_cov$end)			#end of sampling
+	post.poneds<-indiv.summ$captive==T &  							#captives individuals WHICH
+		!is.na(indiv.summ$date.mark.rel) &							#have a date of mark and release AND
+		indiv.summ$date.mark.rel >= min(interval_info$start) & 		#this date falls between the start and
+		indiv.summ$date.mark.rel < max(interval_info$end)			#end of sampling
 		
 	##Adjusting date of release to recalculate release cohort
-		dossie$date.mark.rel[post.poneds==T]<-dossie$date.mark.rel[post.poneds==T] + (y*86400)
+		indiv.summ$date.mark.rel[post.poneds==T]<-indiv.summ$date.mark.rel[post.poneds==T] + (y*86400)
 		
 	##Creating new cohort column
-		dossie$resig.cohort<-NA	
+		indiv.summ$resig.cohort<-NA	
 	##Loop over each individual
-	for (n in 1:nrow(dossie)){ 
-		dossie$resig.cohort[n]<-interval_cov$start[min(which(interval_cov$start>=dossie$date.mark.rel[n]))]
+	for (n in 1:nrow(indiv.summ)){ 
+		indiv.summ$resig.cohort[n]<-interval_info$start[min(which(interval_info$start>=indiv.summ$date.mark.rel[n]))]
 		}
 	##Converting to POSIXct		
-	dossie$resig.cohort%<>%as.POSIXct(origin="1970-01-01", tz=tz(interval_cov$start[1])) 
+	indiv.summ$resig.cohort%<>%as.POSIXct(origin="1970-01-01", tz=tz(interval_info$start[1])) 
 	##Recovering original release dates
-	dossie$date.mark.rel[post.poneds==T]<-dossie$date.mark.rel[post.poneds==T] - (y*86400)
+	indiv.summ$date.mark.rel[post.poneds==T]<-indiv.summ$date.mark.rel[post.poneds==T] - (y*86400)
 	##Saving post poned information as new column
-	dossie$post.poneds<-post.poneds
-	dossie%<>%
+	indiv.summ$post.poneds<-post.poneds
+	indiv.summ%<>%
 		dplyr::filter(!is.na(indiv))
+		
+	

@@ -4,6 +4,8 @@
 ###General
 ##Simpler conversion from factor to numeric
 force.numeric<-function(x){as.numeric(as.character(x))}
+##Transform NA values to FALSE
+na2false<-function(x){x[is.na(x)]<-F;return(x)}
 
 ###Strings
 ##Pad digits with a given numbers of zeroes to force a string of length 'w'

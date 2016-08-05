@@ -4,47 +4,47 @@
 
 	z<-60	#Selecting independence criterion, in minutes
 	##Determining temporally independent records
-	fotos.ind<-ind_record(
+	photos.ind<-ind_record(
 		#Vector of species' names
-		sp=fotos$especie,
+		sp=photos$especies,
 		#Value of independence criteria
 		z=z,
 		#Vector of camera trap stations
-		st=fotos$estacao,
+		st=photos$station,
 		#Vector of individuals' ages
-		age=fotos$age,
+		age=photos$age,
 		#Vector of individuals' names
-		# ind=fotos$individuo,
-		ind=fotos$true.indiv,
+		# ind=photos$individuo,
+		ind=photos$true.indiv,
 		#Vector of time of records
-		time=fotos$time,
+		time=photos$time,
 		#data.frame object with appendable variables to each records
 		var=data.frame( 
 			#Primary interval of records
-			interval=fotos$interval,
+			interval=photos$interval,
 			#Resighting survey of records
-			sample_month=fotos$sample_month,
+			sample_month=photos$sample_month,
 			#'True' name of individual
 			#(different from 'individuo' since discarded individuals were assigned as 'unmark')
-			true.ind=fotos$true.indiv))
+			true.ind=photos$true.indiv))
 			
 	##Ordering new data.frame by time
-	fotos.ind%<>%arrange(time)
-	fotos.ind[fotos.ind$age=="desconhecida","age"]<-NA
-	fotos.ind$age%<>%force.numeric
+	photos.ind%<>%arrange(time)
+	photos.ind[photos.ind$age=="unknown","age"]<-NA
+	photos.ind$age%<>%force.numeric
 	
 		
 ###	
 ##General formatting
 ###
 		##Include among 'station' levels those without any records
-		levels(fotos.ind$station)<-union(levels(fotos.ind$station),levels(trap_hist$estacao))
+		levels(photos.ind$station)<-union(levels(photos.ind$station),levels(trap_hist$station))
 		##Convert sample_month to factor
-		interval_cov$sample_month%<>%factor
+		interval_info$sample_month%<>%factor
 		##Save object with resighting surveys
-		months<-levels(interval_cov$sample_month)			
+		months<-levels(interval_info$sample_month)			
 		##Keeping only 'Dasyprocta leporina' records##
-		agout.ind<-fotos.ind%>%
+		agout.ind<-photos.ind%>%
 			dplyr::filter(sp=="Dasyprocta.leporina")
 			
 	####
@@ -61,10 +61,11 @@
 			agout.ind$independent==T & 
 			(agout.ind$indiv=="na" | agout.ind$indiv=="mark.n.id")
 			,])
-	
+
+	pb <- winProgressBar(title="Revoking independence from dubious records",
+		label="0% done", min=0, max=100, initial=0)
 	##Loop over all 'Dubious Records' 
 		for (i in dubious.records){
-		
 			###If an records' age is UNKNOWN
 			if(is.na(agout.ind[i,"age"])){
 			
@@ -132,8 +133,12 @@
 			###from any other independent marked individual				
 			if (agout.ind[i,"indiv"]=="mark.n.id" & (min.dist.time.mark<=z | min.dist.time.mark==Inf)){
 				agout.ind[i,"independent"]<-F}
+			
+			progress<-which(dubious.records==i)/length(dubious.records)
+			info <- sprintf("%.2f%% done", progress*100)
+			setWinProgressBar(pb, progress*100, label=info)
 			}
-
+	close(pb)
 	##Keeping just the indepent records
 	agout.ind%<>%
 		dplyr::filter(independent)
@@ -155,7 +160,7 @@ trap_summary<-list()
 temp<-data.frame()
 temp.eff<-data.frame()
 summary.template<-matrix(data=0, ncol=length (levels(agout.ind$station)) ,nrow=no_int,
-	dimnames=list(rownames=1:no_int,colnames=levels(trap_hist$estacao)))
+	dimnames=list(rownames=1:no_int,colnames=levels(trap_hist$station)))
 trap_summary$effort.trapdays<-summary.template
 trap_summary$total.records<-summary.template
 trap_summary$unused.records<-summary.template
@@ -168,7 +173,7 @@ trap_summary$recordloss<-summary.template
 		#subset of trap effort history in the primary interval j
 		temp.eff<-trap_hist[trap_hist$interval==j,]
 		##Defining total effort per station in the interval 'j'
-		trap_summary$effort.trapdays[j,]<-tapply(temp.eff$esforco,temp.eff$estacao,sum)
+		trap_summary$effort.trapdays[j,]<-tapply(temp.eff$effort,temp.eff$station,sum)
 		##Defining number of indepedent records per station in the interval 'j'
 		trap_summary$total.records[j,]<-tapply(temp$independent,temp$station,sum)
 		trap_summary$total.records[which(is.na(trap_summary$total.records))]<-0
@@ -182,19 +187,19 @@ trap_summary$recordloss<-summary.template
 	
 ###Calculating interval and trapping sessions covariates###
 	trapping_sessions$duration.days<-(difftime(trapping_sessions$end,trapping_sessions$start,"days")%>%as('numeric') )+ 1
-	interval_cov$duration.days<-(difftime(interval_cov$end,interval_cov$start,"days")%>%as('numeric') ) + 1
-	interval_cov$time_elaps.days[2:no_int]<-difftime(interval_cov$start[2:no_int],interval_cov$end[1:no_int-1],"days") 		
-	interval_cov$time.interval.days[2:no_int]<-difftime(interval_cov$start[2:no_int],interval_cov$start[1:no_int-1],"days")
-	interval_cov$time.interval.months<-round(interval_cov$time.interval.days/30,digits=3)
-	interval_cov$time.interval.years<-round(interval_cov$time.interval.days/365,digits=4)
-	interval_cov$cum.time_elaps.days[2:no_int]<-cumsum(interval_cov$time_elaps.days[-1])
-	interval_cov$effort.trapdays<-apply(trap_summary$effort.trapdays,1,sum)
-	interval_cov$failure.rate<-interval_cov$effort.trapdays/(6*33)
-	interval_cov$effort.trapdays.log<-log(interval_cov$effort.trapdays)
-	interval_cov$effort.var<-apply(trap_summary$effort.trapdays,1,var)
-	interval_cov$recordloss.agout.mean<-apply(trap_summary$recordloss,1,mean)
-	interval_cov$recordloss.agout.total<-apply(trap_summary$unused.records,1,sum)/apply(trap_summary$total.records,1,sum)
-	interval_cov$recordloss.agout.var<-apply(trap_summary$recordloss,1,var)
-	interval_cov$agout.records<-apply(trap_summary$total.records,1,sum)
-	rownames(interval_cov)<-interval_cov$start
+	interval_info$duration.days<-(difftime(interval_info$end,interval_info$start,"days")%>%as('numeric') ) + 1
+	interval_info$time_elaps.days[2:no_int]<-difftime(interval_info$start[2:no_int],interval_info$end[1:no_int-1],"days") 		
+	interval_info$time.interval.days[2:no_int]<-difftime(interval_info$start[2:no_int],interval_info$start[1:no_int-1],"days")
+	interval_info$time.interval.months<-round(interval_info$time.interval.days/30,digits=3)
+	interval_info$time.interval.years<-round(interval_info$time.interval.days/365,digits=4)
+	interval_info$cum.time_elaps.days[2:no_int]<-cumsum(interval_info$time_elaps.days[-1])
+	interval_info$effort.trapdays<-apply(trap_summary$effort.trapdays,1,sum)
+	interval_info$failure.rate<-interval_info$effort.trapdays/(6*33)
+	interval_info$effort.trapdays.log<-log(interval_info$effort.trapdays)
+	interval_info$effort.var<-apply(trap_summary$effort.trapdays,1,var)
+	interval_info$recordloss.agout.mean<-apply(trap_summary$recordloss,1,mean)
+	interval_info$recordloss.agout.total<-apply(trap_summary$unused.records,1,sum)/apply(trap_summary$total.records,1,sum)
+	interval_info$recordloss.agout.var<-apply(trap_summary$recordloss,1,var)
+	interval_info$agout.records<-apply(trap_summary$total.records,1,sum)
+	rownames(interval_info)<-interval_info$start
 	

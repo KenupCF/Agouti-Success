@@ -17,6 +17,7 @@ ind_record<-function(sp,indiv,station,age=NULL, time, z, var=NULL){
 		if(!is.null(var)){data<-cbind(data,var)}  # pool desirable variables together with photo data
 	data<-data[order(data$sp, data$indiv, data$age, data$station, data$time, decreasing=F),] #order dataframe in relevant manner
 	independent<-T #logical vector, 1st element TRUE
+	pb <- winProgressBar(title="Running temporal independence", label="0% done", min=0, max=100, initial=0)
 	for (i in 2:nrow(data)){ #for every row but the first:
 		li<-max(which(independent==T))  #define index of the last independent record
 		if(data$sp[i]==data$sp[li] & data$station[i]==data$station[li] & data$indiv[i]==data$indiv[li] & data$age[i]==data$age[li]){
@@ -24,7 +25,11 @@ ind_record<-function(sp,indiv,station,age=NULL, time, z, var=NULL){
 			else{independent[i]<-T}
 		}
 		else{independent[i]<-T}
+	progress<-i/nrow(data)
+	info <- sprintf("%.2f%% done", progress*100)
+	setWinProgressBar(pb, progress*100, label=info)
 	}
 	data<-cbind(data,independent)
+	close(pb)
 	return(data)
 }

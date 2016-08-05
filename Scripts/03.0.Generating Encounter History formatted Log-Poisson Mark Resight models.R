@@ -3,7 +3,7 @@
 ################################################################################
 
 	##Character vector of all individuals recorded in the study (even not Identified)
-	ind<-union(levels(factor(agout.ind$indiv)),levels(factor(dossie$indiv)))
+	ind<-union(levels(factor(agout.ind$indiv)),levels(factor(indiv.summ$indiv)))
 
 	##Summarising number of encounter for each individual in each interval
 	eh.temp<-agout.ind%>%
@@ -29,9 +29,9 @@
 		#variable to split marked individuals from not marked ou not indentified groups 	
 		dplyr::mutate(is.indiv=!indiv%in%c('unmark','mark.n.id','na'))%>%
 		#merging in date information of intervals
-		merge(interval_cov[,c('interval','start')],by='interval')%>%
+		merge(interval_info[,c('interval','start')],by='interval')%>%
 		#merging in individual information
-		merge(dossie[,
+		merge(indiv.summ[,
 				c('indiv','resig.cohort','true.cohort','date.mark.rel','date.rm')],
 			by='indiv',all=TRUE)%>%
 		#removing records out of intervals (NA)
@@ -94,9 +94,9 @@
 
 ##Formatting encounter history as data.frame, with all encounter collapsed as character strings,
 ##as require by package RMark
-	eh.df<-data.frame(indiv=names(ch),ch=ch)%>%merge(dossie,by='indiv',all.y=FALSE)
+	eh.df<-data.frame(indiv=names(ch),ch=ch)%>%merge(indiv.summ,by='indiv',all.y=FALSE)
 	rownames(eh.df)<-eh.df$indiv
-
+	eh.df$ch%<>%as.character
 #####	
 ###Vectors cointaning the number of exact number of marks in the population
 ###('0' means exact number of marks in not know)

@@ -1,4 +1,4 @@
-especie,estacao,data,horario_inicio,horario_fim,individuo,orelha_esquerda,orelha_direita,pescoco,transmissor,marca_pelo,tipo_registro,lados.usados,observacoes,identificador,cam_model,idade,captive.0,marcacao_descartada,individuo.id2,orelha_esquerda.id2,orelha_direita.id2,pescoco.id2,transmissor.id2,marca_pelo.id2,idade.id2,observacoes.id2,identificador2,idade.checked.id2
+especies,station,date,time_start,time_end,indiv,left.ear,right.ear,collar,radio.transmitter,marked.fur,record.format,sides.used,obs,identifier,cam.model,age,captive.0,marcacao_descartada,individuo.id2,orelha_esquerda.id2,orelha_direita.id2,pescoco.id2,transmissor.id2,marca_pelo.id2,idade.id2,observacoes.id2,identificador2,idade.checked.id2
 Dasyprocta.leporina,AFV01,17/11/2013,09:48,09:48,unmark,ausente,n_detec,ausente,ausente,ausente,foto,1,__,caio,__,adulto,NA,_,_,_,_,_,_,_,_,_,_,_
 Dasyprocta.leporina,AFV01,17/11/2013,12:26,12:26,unmark,ausente,ausente,ausente,ausente,ausente,foto,1,__,caio,__,adulto,NA,_,_,_,_,_,_,_,_,_,_,_
 Dasyprocta.leporina,AFV01,17/11/2013,12:35,12:35,unmark,ausente,ausente,ausente,ausente,ausente,foto,1,__,caio,__,adulto,NA,_,_,_,_,_,_,_,_,_,_,_
