@@ -65,7 +65,8 @@
 		threads=-1)
 	###################
 	##Model Selection##
-	###################		agout.results.alpha.bkp<-agout.results.alpha #Backup of full results
+	###################
+	agout.results.alpha.bkp<-agout.results.alpha #Backup of full results
 	##Temp object with selection model table
 		temp<-agout.results.alpha$model.table[order(agout.results.alpha$model.table$weight,decreasing=T),]
 	##Removing models without convergence
@@ -299,9 +300,9 @@
 				alpha<-list()
 				sigma<-list()
 				Phi<-list()
-				for (m in 1:nrow(agout.results.sigma$model.table)){
-					alpha[[m]]<-agout.results.sigma[[m]]$model.parameters$alpha
-					sigma[[m]]<-agout.results.sigma[[m]]$model.parameters$sigma
+				for (m in 1:nrow(agout.results.Phi$model.table)){
+					alpha[[m]]<-agout.results.Phi[[m]]$model.parameters$alpha
+					sigma[[m]]<-agout.results.Phi[[m]]$model.parameters$sigma
 					Phi[[m]]<-agout.results.Phi[[m]]$model.parameters$Phi}
 				names(alpha)<-paste("alpha",1:length(alpha),sep=".")
 				names(sigma)<-paste("sigma",1:length(sigma),sep=".")

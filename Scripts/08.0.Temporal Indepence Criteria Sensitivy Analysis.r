@@ -21,7 +21,7 @@ for (zz in 1:length(criteria.vec)){
 	##Determining temporally independent records
 	photos.ind<-ind_record(
 		#Vector of species' names
-		sp=photos$especies,
+		sp=photos$species,
 		#Value of independence criteria
 		z=z,
 		#Vector of camera trap stations

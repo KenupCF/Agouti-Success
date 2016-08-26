@@ -22,11 +22,11 @@
 	require(rgeos)
 ###Importing Custom Functions	
 	##Transform interval records to point records
-	devtools::source_url('https://raw.githubusercontent.com/KenupCF/Kenup-Repo/master/point2interval%20v1.1.R')
+	devtools::source_url('https://raw.githubusercontent.com/KenupCF/Agouti-Success/master/Functions/interval2point%20v1.1.R')
 	##Define temporally independent records
-	devtools::source_url('https://raw.githubusercontent.com/KenupCF/Kenup-Repo/master/Independent_records%20v3.0.R')
+	devtools::source_url('https://raw.githubusercontent.com/KenupCF/Agouti-Success/master/Functions/Independent_records%20v3.0.R')
 	##Quick functions to make life easier
-	devtools::source_url('https://raw.githubusercontent.com/KenupCF/Kenup-Repo/master/Aux%20Functions.R')
+	devtools::source_url('https://raw.githubusercontent.com/KenupCF/Agouti-Success/master/Functions/Aux%20Functions.R')
 	
 {#@#remove this
 ##General parameters##
@@ -53,14 +53,14 @@ setwd("C:\\Users\\Kenup\\Dropbox\\03-Trabalho\\01-Science\\01-Artigos sendo Escr
 	##Spatial data###
 		spatial.data.wd<-'.\\Data\\Spatial Files'
 		sp.obj<-list()
-		sp.obj$spatial.sampling<-readOGR(dsn=spatial.data.wd,layer="Amostragem v2.0")				
-		sp.obj$study.area<-readOGR(dsn=spatial.data.wd,layer="limite_PARNA_TIJUCA")
-		sp.obj$landmarks<-readOGR(dsn=spatial.data.wd,layer="Landmarks")
-		sp.obj$camera.traps<-sp.obj$spatial.sampling[substr(sp.obj$spatial.sampling$label,1,3)=="AFV",]
-		sp.obj$release.pens<-sp.obj$landmarks[str_detect(sp.obj$landmarks$label,"Cercado"),]
-		sp.obj$coimbra.sites<-readOGR(dsn=spatial.data.wd,layer="Coimbra Sites Estimated")
-			proj.utm<-"+proj=utm +datum=WGS84 +zone=23 +south"
-			sp.obj$coimbra.sites%<>%spTransform(CRS(proj.utm))
+		sp.obj$camera.traps<-readOGR(dsn=spatial.data.wd,layer="Camera Trap Locations",
+			encoding='UTF-8',use_iconv=TRUE)				
+		sp.obj$study.area<-readOGR(dsn=spatial.data.wd,layer="TNP Limits",
+			encoding='UTF-8',use_iconv=TRUE)
+		sp.obj$release.pens<-readOGR(dsn=spatial.data.wd,layer="Release Pen Locations",
+			encoding='UTF-8',use_iconv=TRUE)		
+		sp.obj$coimbra.sites<-readOGR(dsn=spatial.data.wd,
+			layer="Coimbra-Filho Release Sites (Estimated)",encoding='UTF-8',use_iconv=TRUE)
 		
 ##Formatting Time Data as POSIXct##
 tz<-'Etc/GMT-3' #Study Area timezone code
@@ -123,16 +123,9 @@ trap_hist$interval<-sapply(trap_hist$date, function(x){
 	if(any(y <- (x>=interval_info$start & x<=interval_info$end+86399))>0) {interval_info$interval[which(y)]} 
 	else {NA}})
 
-{#@# rethink this
-# age.struct<-data.frame(idade=c("filhote","juvenil","adulto","desconhecida"),age=c(0,1,1,"desconhecida"))
-		# photos<-merge(photos,age.struct,by="idade",all.x=TRUE)
-			# gambiarra, trocando NA's por 1 na idade
-			# photos[is.na(photos$age),"age"]<-1
-}
-
 ##Removing unused stations
 	#Character vector containing discarded stations
-	unused.st<-c("AFV25")
+	unused.st<-c('AFV25','AFV05','AFV10','AFV21')
 	#Removing such stations from effort records
 	trap_hist<-trap_hist[!trap_hist$station%in%unused.st,]
 	#Removing photographic records from the same stations
@@ -220,5 +213,17 @@ trap_hist$interval<-sapply(trap_hist$date, function(x){
 	indiv.summ$post.poneds<-post.poneds
 	indiv.summ%<>%
 		dplyr::filter(!is.na(indiv))
-		
-	
+
+#################################
+#####apagar depois!##############
+#################################
+data.protect<-function(x){
+require(dplyr)
+y<-x%>%dplyr::filter(station%in%c('AFV09','AFV12'))%>%
+	dplyr::filter(interval%in%29:30)%>%
+	dplyr::arrange(station,time)
+}
+
+photos%<>%data.protect
+photos.ind%<>%data.protect
+agout.ind%<>%data.protect

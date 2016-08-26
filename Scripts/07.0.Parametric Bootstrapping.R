@@ -11,7 +11,7 @@
 			mutate(rownam=rownames(best.model[[1]]$results$real))%>%
 			filter(str_detect(rownam,'U\\sg'))%>%
 			mutate(time=gsub(x=rownam,"^.*t","")))
-	U.sizes$estimates<-merge(U.sizes$estimates,interval_cov,by="time")%>%
+	U.sizes$estimates<-merge(U.sizes$estimates,interval_info,by="time")%>%
 		arrange(force.numeric(time))
 	U.index<-which(str_detect(rownames(best.model[[1]]$design.matrix),"U\\s"))
 	U.sizes$vcv<-best.model[[1]]$results$real.vcv[U.index,U.index]
@@ -25,7 +25,7 @@
 
 	###List of estimates and variance-covariance matrices of survival estimates
 	survival<-model.average(best.model,"Phi",vcv=T,drop=F)
-	survival$estimates<-merge(survival$estimates,interval_cov,by="time")%>%
+	survival$estimates<-merge(survival$estimates,interval_info,by="time")%>%
 		arrange(force.numeric(time))
 	survival$estimates<-survival$estimates[survival$estimates$fixed!="Fixed",] #removendo valores fixados de Phi
 	survival$estimates<-survival$estimates[!duplicated(survival$estimates[,c("time")]),]

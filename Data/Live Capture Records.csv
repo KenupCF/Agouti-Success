@@ -1,29 +1,29 @@
 indiv,station,trap.model,date.capture,date.handling,date.release,sex.female,previous.marks,sedated,veterinarian,new.marks,freeze.secs.right,freeze.secs.left,weight.kg,neck.size.cm,obs
-bella,Arm05,PNT,22/07/2013,22/07/2013,22/07/2013,TRUE,"Colar Amarelo; Transmissor (150,241);Tag 0038 (Orelha Esquerda)",TRUE,Lúcio,Colar Amarelo (S/ Transmissor); Tags Amarelo/Amarelo (Dir: 220 / Esq: 370); Marcação no Pêlo,-,-,2.8,-,Precisou de um repique. Mamas estavam proeminentes. Marcações prévias foram retiradas
-primo,Arm02,PNT,23/07/2013,23/07/2013,23/07/2013,FALSE,,TRUE,Lúcio,Brincos Preto/Branco (Dir.P: 125 / Dir.G: 204 //Esq.P: 124 / Esq.G: 269); Pêlo Marcado,-,-,1.28,-,Indivíduo bem jovem. Não colocamos colar. Marcação no pêlo não ficou muito boa
-chico,Arm02,PNT,24/07/2013,24/07/2013,24/07/2013,FALSE,,TRUE,Lúcio,Brincos Prata/Roxo (Dir.P: 106 / Dir.G: 235 // Esq.P: 105 / Esq.G: 234); Marcação no pêlo,-,-,1.14,-,Indivíduo bem jovem. Não colocamos colar. Precisou de repique
-bella,Arm16,Tomahawk,23/07/2013,-,23/07/2013,TRUE,,FALSE,-,-,-,-,-,-,Recaptura
-bella,Arm16,Tomahawk,24/07/2013,-,24/07/2013,TRUE,,FALSE,-,-,-,-,-,-,Ficou circulando as armadilhas após a soltura
-anathema,Arm15,Tomahawk,25/07/2013,25/07/2013,25/07/2013,TRUE,,TRUE,Lúcio,"Colar Branco (150,361); Brincos Branco/Rosa (Dir.P: 107 / Dir.G: 224  // Esq.P: 954 / Esq.G: 223); Marcação no pêlo",-,-,2.6,-,Animal muito tranquilo durante a contenção. Tivemos dificuldade para assustá-la para dentro da gaiola de contenção. Patas traseiras com machucados antigos.
-bella,Arm16,Tomahawk,25/07/2013,-,25/07/2013,TRUE,,FALSE,-,-,-,-,-,-,Ficou circulando as armadilhas após a soltura
-negra,Arm01,Tomahawk,25/07/2013,-,25/07/2013,TRUE,Colar e Ear Tags sem Cores,FALSE,-,-,-,-,-,-,Não foi triada por questões de logísticas e comunicação.
-primo,Arm02,PNT,26/07/2013,-,26/07/2013,FALSE,,FALSE,-,-,-,-,-,-,Recaptura
-neguinha,Arm19,PNT,06/11/2013,06/11/2013,06/11/2013,TRUE,,TRUE ,Lúcio,Brincos Preto/Rosa (Dir.P: 148 / Dir.G: 231 // Esq.P: 149 / Esq.G: 236); Pêlo Descolorido,-,-,1.5,-,_
-negra,Arm18,Tomahawk,07/11/2013,08/11/2013,08/11/2013,TRUE,Ear Tag (Right.G: 0062); Colar de Rádio sem Bateria (150.601),TRUE ,Lúcio,Brincos Preto/Preto (Dir.G: 240 // Esq.P: 167 / Esq.G: 243); Colar Preto s/ Tranmissor; Pêlo Descolorido,-,-,3.2,-,Mamas proeminentes (possívelmente pós-grávida)
-anathema,Arm15,Tomahawk,03/02/2014,03/02/2014,03/02/2014,TRUE,"Ear Tag (Right.P: 107 // Left.P: 954); Colar de Branco, sem transmissor",TRUE ,Lúcio,Novo colar branco (s/ transmissor). Pêlo marcado (Descolorido e marcado a frio),60,70,2.8,16,_
-lili,Arm32,Tomahawk,04/02/2014,04/02/2014,04/02/2014,TRUE,,TRUE,Lúcio,Brincos (Dir.P: 986 // Esq.P: 955). Pêlo marcado (Descolorido e marcado a frio). Colar roxo sem transmissor,70,70,2.7,16,_
-luna,Arm24,Tomahawk,05/02/2014,05/02/2014,05/02/2014,TRUE,,TRUE,Lúcio,Brincos (Dir.P: 992 // Esq.P: 993). Pêlo marcado (Descolorido e marcado a frio). Colar roxo sem transmissor,70,70,2.97,16.5,"Havia pouco gelo seco para marcação. Marcas do ferro ficaram um pouco roxas, e depois formaram casquinha"
-malu,Arm33,Tomahawk,11/05/2014,12/05/2014,13/05/2014,TRUE,,TRUE,Lúcio,Brincos Branco/Laranja (Dir.P: 110 / Dir.G: 321 // Esq.P: 111 / Esq.G: 322) Gelo Seco (Triangulo) e Blondor (Quadrado),70,70,1.22,-,_
-negra,Arm18,Tomahawk,15/05/2014,16/05/2014,17/05/2014,TRUE,Ear Tag (Right.G: 0062 // Left.P: 0167 / Left.G:0243 Preto;Preto); Colar Preto,TRUE,Lúcio,Gelo Seco e Blondor ( _I_  ),80,80,3.315,-,"O gelo seco estava acabando, e a marca da esquerda ficou claramente ruim."
-roland,AFV33,Tomahawk,18/08/2014,20/08/2014,21/08/2014,FALSE,"Colar de rádio (Branco), Pêlo Descolorido, Ear Tags Pequenos",TRUE,ArthurAdilson,"Gelo Seco ( I ), Brincos Coloridos (D: 357 //E: 356; Branco/Branco)",60,60,2.8,-,"Colar de rádio machucando o pescoço, foi removido."
-luna,AFV09,Tomahawk,18/08/2014,20/08/2014,21/08/2014,TRUE,"Colar Rosa, Freeze Branding, Ear Tags Pequenos",TRUE,ArthurAdilson,"Brinco Grande (Roxo/Amarelo), Colar de Rádio (Laranja, 150.801)",-,-,3,-,Estava grávida.
-luke,AFV05b,Tomahawk,19/08/2014,20/08/2014,21/08/2014,FALSE,,TRUE,ArthurAdilson,"Brinco Grande (Branco/Azul, D: 366// E: 310), Brincos Pequenos (D: 223 // E: 224), Gelo Seco, Blondor ( O ). Remoção material genético",60,60,2,-,_
-maia,AFV13,-,18/08/2014,20/08/2014,21/08/2014,TRUE,,TRUE,ArthurAdilson,Blondor (o O); Brinco Grande (Prata/Rosa. D: 344 // E: 333); Brinco Pequeno (D: 221); Remoção material genético (Direita),-,-,0.9,-,_
-grey,AFV07,-,19/08/2014,20/08/2014,21/08/2014,TRUE,,TRUE,ArthurAdilson,"Blondor ( ""-""-"" ); Brinco Grande (Branco/Amarelo. D: 372 // E: 386); Brinco Pequeno (D: 204); Remoção material genético (Direita)",-,-,0.8,-,_
-bjork,AFV12,-,19/08/2014,20/08/2014,21/08/2014,TRUE,,TRUE,ArthurAdilson,Blondor ( X ); Brinco Grande (Branco/Roxo. D: 316 // E: 358); Brinco Pequeno (D: 205); Remoção material genético (Direita),-,-,0.95,-,_
-wallace,AFV12,-,22/08/2014,25/08/2014,26/08/2014,FALSE,"Blondor (V), Colar de Rádio, Tag Pequena",TRUE,ArthurAdilson,"Marcação a Frio (Irregular), Brinco Grande (Prata/Amarelo; D: 394 // E: 337)",45,60,2.3,-,_
-lolita,AFV35,Tomahawk,20/08/2014,25/08/2014,26/08/2014,TRUE,,TRUE,ArthurAdilson,Blondor ( I I ); Brinco Grande (Rosa/Rosa. D: 324 // E: 332); ; Remoção material genético (Direita),-,-,1,-,_
-grey,Researchers' House,-,23/08/2014,-,23/08/2014,TRUE,,FALSE,-,-,-,-,-,-,Transferida para o lago das fadas
+bella,Arm05,PNT,22/07/2013,22/07/2013,22/07/2013,TRUE,"Yellow collar; transmitter (150,241);Tag 0038 (left ears)",TRUE,Lúcio,Yellow collar (no VHS transmitter); yellow/yellow ear tag (Right: 220 / Left: 370); fur marking.,-,-,2.8,-,Sedative replicated. Prominent breasts. Previous marks removed.
+primo,Arm02,PNT,23/07/2013,23/07/2013,23/07/2013,FALSE,,TRUE,Lúcio,Black/white ear tags (right.small: 125 / right.big: 204 //left.small: 124 / left.big: 269); fur marking.,-,-,1.28,-,Very young individual. It did not receive collars. Fur marking not good.
+chico,Arm02,PNT,24/07/2013,24/07/2013,24/07/2013,FALSE,,TRUE,Lúcio,Silver/purple ear tags (right.small: 106 / right.big: 235 // left.small: 105 / left.big: 234); fur marking.,-,-,1.14,-,Very young individual. It did not receive collars. Sedative replicated.
+bella,Arm16,Tomahawk,23/07/2013,-,23/07/2013,TRUE,,FALSE,-,-,-,-,-,-,Recapture.
+bella,Arm16,Tomahawk,24/07/2013,-,24/07/2013,TRUE,,FALSE,-,-,-,-,-,-,She was walking around the live traps after release.
+anathema,Arm15,Tomahawk,25/07/2013,25/07/2013,25/07/2013,TRUE,,TRUE,Lúcio,"White collar (150,361); with/pink ear tags (right.small: 107 / right.big: 224  // left.small: 954 / left.big: 223); fur marking.",-,-,2.6,-,Animal quiet while handling before sedation. It was hard to conduce her to the back of live trap. Hind paws with old injures.
+bella,Arm16,Tomahawk,25/07/2013,-,25/07/2013,TRUE,,FALSE,-,-,-,-,-,-,She was walking around the live traps after release.
+negra,Arm01,Tomahawk,25/07/2013,-,25/07/2013,TRUE,Collars and ear tags with no colour.,FALSE,-,-,-,-,-,-,She was not handled because of logistic problems and lack of communication.
+primo,Arm02,PNT,26/07/2013,-,26/07/2013,FALSE,,FALSE,-,-,-,-,-,-,Recapture.
+neguinha,Arm19,PNT,6/11/2013,6/11/2013,6/11/2013,TRUE,,TRUE ,Lúcio,Black/pink ear tags (right.small: 148 / right.big: 231 // left.small: 149 / left.big: 236); fur bleaching.,-,-,1.5,-,_
+negra,Arm18,Tomahawk,7/11/2013,8/11/2013,8/11/2013,TRUE,Ear tag (right.big: 0062); radio collar with no battery (150.601),TRUE ,Lúcio,Black/black ear tags (right.big: 240 // left.small: 167 / left.big: 243); black collar without VHS transmitter; fur bleaching.,-,-,3.2,-,Prominent breasts (possibly post-pregnancy)
+anathema,Arm15,Tomahawk,3/02/2014,3/02/2014,3/02/2014,TRUE,Ear Tag (Right.small: 107 // Left.small: 954); whithe collar with no VHS transmitter.,TRUE ,Lúcio,New with collar (no VHS transmitter); fur marking (fur bleaching & freeze-branding),60,70,2.8,16,_
+lili,Arm32,Tomahawk,4/02/2014,4/02/2014,4/02/2014,TRUE,,TRUE,Lúcio,Ear tags (right.small: 986 // left.small: 955); fur marking (fur bleaching & freeze-branding); purple collar (no transmitter).,70,70,2.7,16,_
+luna,Arm24,Tomahawk,5/02/2014,5/02/2014,5/02/2014,TRUE,,TRUE,Lúcio,Ear tags (right.small: 992 // left.small: 993); fur marking (fur bleaching fur & freeze-branding); purple collar (no transmitter).,70,70,2.97,16.5,"Dry-ice lacking in quantity. Freeze-branding did not cause strong black and blue marks in the skin, but then formed scabs."
+malu,Arm33,Tomahawk,11/05/2014,12/05/2014,13/05/2014,TRUE,,TRUE,Lúcio,White/orange ear tags (right.small: 110 / right.big: 321 // left.small: 111 / left.big: 322); freeze-branding (triangle) & fur bleaching (square).,70,70,1.22,-,_
+negra,Arm18,Tomahawk,15/05/2014,16/05/2014,17/05/2014,TRUE,Ear tag (right.big: 0062 // Left.small: 0167 / Left.big: 0243 black/black); black collar,TRUE,Lúcio,Freeze-branding & fur bleaching ( _I_  ).,80,80,3.315,-,"Dry-ice was finishing, the left mark was no good."
+roland,AFV33,Tomahawk,18/08/2014,20/08/2014,21/08/2014,FALSE,White radio collar; fur bleaching; small ear tags.,TRUE,Arthur/Adilson,Freeze-branding ( I ); white/white ear tags (right: 357 //left: 356),60,60,2.8,-,Radio collar was hurting the neck. It was removed.
+luna,AFV09,Tomahawk,18/08/2014,20/08/2014,21/08/2014,TRUE,"Pink collar; freeze-branding, small ear tags.",TRUE,Arthur/Adilson,Purple/yellow big ear tags; orange radio collar( 150.801),-,-,3,-,She was pregnant.
+luke,AFV05b,Tomahawk,19/08/2014,20/08/2014,21/08/2014,FALSE,,TRUE,Arthur/Adilson,White/blue ear tags (right.big: 366/ right.small: 223 // left.big: 310// left.small: 224 ); freeze-branding & fur bleaching ( O ). Genetic material collected.,60,60,2,-,_
+maia,AFV13,-,18/08/2014,20/08/2014,21/08/2014,TRUE,,TRUE,Arthur/Adilson,Fur bleaching (o O); silver/pink ear tags (right.big: 344 / right.small: 221 // left.big: 333); Genetic material collect (right ear).,-,-,0.9,-,_
+grey,AFV07,-,19/08/2014,20/08/2014,21/08/2014,TRUE,,TRUE,Arthur/Adilson,"Fur bleaching ( ""-""-"" ); white/ yellow ear tag (right.big: 372 // left.big: 386); ear tag (right.small: 204); Genetic material collected (right ear).",-,-,0.8,-,_
+bjork,AFV12,-,19/08/2014,20/08/2014,21/08/2014,TRUE,,TRUE,Arthur/Adilson,Fur bleaching( X ); white/purple ear tag(right.big: 316 // left.big: 358); ear tag (right.small: 205); genetic material collected (right ear).,-,-,0.95,-,_
+wallace,AFV12,-,22/08/2014,25/08/2014,26/08/2014,FALSE,Fur bleaching (V); radio collar; small ear tag.,TRUE,Arthur/Adilson,Fur bleaching (irregular); silver/yellow ear tags (right.big: 394 // left.big: 337),45,60,2.3,-,_
+lolita,AFV35,Tomahawk,20/08/2014,25/08/2014,26/08/2014,TRUE,,TRUE,Arthur/Adilson,fur bleaching ( I I ); pink/pink ear tags (right.big: 324 // left.big: 332) ; genetic material collected (right)).,-,-,1,-,_
+grey,Researchers' House,-,23/08/2014,-,23/08/2014,TRUE,,FALSE,-,-,-,-,-,-,Transfered to station AFV07.
 grey,AFV07,-,27/08/2014,-,27/08/2014,TRUE,,FALSE,-,-,-,-,-,-,_
 lolita,AFV35,-,27/08/2014,-,29/08/2014,TRUE,,FALSE,-,-,-,-,-,-,_
 maia,Roland,-,28/08/2014,-,29/08/2014,TRUE,,FALSE,-,-,-,-,-,-,_
@@ -31,9 +31,9 @@ wallace,Wallace,-,27/08/2014,-,29/08/2014,FALSE,,FALSE,-,-,-,-,-,-,_
 bjork,AFV12,-,26/08/2014,-,29/08/2014,TRUE,,FALSE,-,-,-,-,-,-,_
 bjork,AFV12,-,21/08/2014,-,21/08/2014,TRUE,,FALSE,-,-,-,-,-,-,_
 roland,AFV33,-,24/08/2014,-,24/08/2014,FALSE,,FALSE,-,-,-,-,-,-,_
-roland,AFV33,-,25/08/2014,-,-,FALSE,,TRUE,-,-,-,-,-,-,Estava morto na armadilha
+roland,AFV33,-,25/08/2014,-,-,FALSE,,TRUE,-,-,-,-,-,-,It was dead inside the live trap.
 roland,AFV33,-,21/08/2014,-,21/08/2014,FALSE,,FALSE,-,-,-,-,-,-,_
 bjork,AFV12,-,23/08/2014,-,23/08/2014,TRUE,,FALSE,-,-,-,-,-,-,_
 bjork,AFV12,-,25/08/2014,-,25/08/2014,TRUE,,FALSE,-,-,-,-,-,-,_
-sol,AFV29,Tomahawk,09/11/2014,10/11/2014,11/11/2014,TRUE,,TRUE,ArthurAdilson,"Blondor ( | O ), Brinco Grande (Laranja/Amarelo. D: 227 // E: 203); Remoção material genético (QUAL?); Marcação a Frio ( | O ); Colar de Rádio (Colar Vermelho, Receptor s/ Cor. Freq 150.361)",70,70,3,-,"Vagina sangrando, por ferimento ou pós-coito. Animal foi levado ao cercado para simulação de soltura antes de ser liberado no seu local de captura"
-kanayeva,AFV12,Tomahawk,08/03/2015,09/03/2015,10/03/2015,TRUE,,TRUE,Arthur,Blondor (I); Brinco Grande (D:0393/E:0318); Marcação a frio (I); Remoção material genético (direita),45,41,0.84,12,"Comprimento total (cauda-ponta da cabeça) :34,5 cm; Comprimento dorso-ventral: 9,0 cm; Comprimento pata traseira: 9,0 cm; Comprimento rádio+pata: 10 cm"
+sol,AFV29,Tomahawk,9/11/2014,10/11/2014,11/11/2014,TRUE,,TRUE,Arthur/Adilson,Fur bleaching ( | O ); orange/yellow ear tags (right.big: 227 // left.big: 203); genetic material collected (which ear?); freeze-branding ( | O ); red radio collar / transmitter with no colour ( freq 150.361).,70,70,3,-,Vagina was bleeding ( injured post copulation). Animal was taken to the enclosure to simulate the release before be release in the local of capture (TV).
+kanayeva,AFV12,Tomahawk,8/03/2015,9/03/2015,10/03/2015,TRUE,,TRUE,Arthur,Fur bleaching (I); ear tags (right.big:0393/ left.big: 0318); freeze-branding (I); genetic material collected (right).,45,41,0.84,12,"Total length (tail - head top) :34,5 cm; dorsoventral length : 9,0 cm;  hindpaw length: 9,0 cm; length radio collar + paw: 10 cm"
