@@ -2,11 +2,12 @@ This repository contains supplementary information regarding the paper "Walking 
 
 Contained here are:
 
-- R Scripts and Functions used to carry out the analyses
-- RData objects with the full carried-out analyses
-- Raw data files used as input.
+- R Scripts and Functions used to carry out the analyses (**.R**)
+- Full carried-out analyses (**.RData**)
+- Raw data files used as input (**.csv**).
+- Supplementary Tables as Published (**.xlsx**)
 
 Disclaimer: 
 
-For data protection reasons, the photographic records sheet has been truncated to two stations and 12 days of sampling, providing only a toy example.
-Nevertheless, the summarised data and analysis present on the .RData represent the full set of records.
+For data protection reasons, the photographic records **.csv** sheet has been truncated to two stations and 12 days of sampling, providing only a toy example.
+Nevertheless, the summarised data and analysis present on the **.RData** files represent the full set of records.
