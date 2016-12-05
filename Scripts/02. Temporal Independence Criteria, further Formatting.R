@@ -1,18 +1,6 @@
-###############
-####PART II####
-###############
+##Author: Caio Kenup#############
+##email: caio.kenup@gmail.com####
 
-##Temporal Independence##
-
-###Vector of temporal independence criteria, in minutes
-criteria.vec<-c(30,45,60,90,120,60*6,60*12,60*24)
-
-##Creating empty lists
-fotos.ind.ls<-list()
-mark.results<-list()
-
-##Looping over each independence criteria
-for (zz in 1:length(criteria.vec)){
 #######################################################
 ##Temporal Independence Criteria, further Formatting###
 #######################################################
@@ -218,32 +206,3 @@ trap_summary$recordloss<-summary.template
 	interval_info$agout.records<-apply(trap_summary$total.records,1,sum)
 	rownames(interval_info)<-interval_info$start
 	
-	
-	###Generate RDPNE encounterhistory
-		source(".\\Scripts\\03.0.Generating Encounter History formatted Log-Poisson Mark Resight models.R")
-	
-	###RMark Processing Data
-		source(".\\Scripts\\04.0.Processing RMark Data.R")
-	
-####
-##Running simple models, all-constant, to have initial values to start more complex ones##
-####
-	naive.dot.fix.siman<-RMark::mark(naive.agout.proc,cl.agout.ddl,
-		options="SIMANNEAL",
-		threads=-1)
-	dot.fix.init.siman<-RMark::mark(agout.proc,cl.agout.ddl,
-		initial=naive.dot.fix.siman,
-		options="SIMANNEAL",
-		threads=-1)
-		
-#Running model with temporal variation on 'alpha'
-	mark.model<-RMark::mark(agout.proc,cl.agout.ddl,
-		initial=dot.fix.init.siman,
-		threads=-1,
-		model.parameters=list(
-			U=list(formula=~sample_month),
-			alpha=list(formula=~1+time)))
-			
-##Saving results from zzth independence criterion
-	mark.results[[zz]]<-mark.model			
-}	

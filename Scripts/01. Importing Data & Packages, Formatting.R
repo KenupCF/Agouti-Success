@@ -27,15 +27,13 @@
 	devtools::source_url('https://raw.githubusercontent.com/KenupCF/Agouti-Success/master/Functions/Independent_records%20v3.0.R')
 	##Quick functions to make life easier
 	devtools::source_url('https://raw.githubusercontent.com/KenupCF/Agouti-Success/master/Functions/Aux%20Functions.R')
+
+Sys.setlocale("LC_TIME", "English")
+
 	
-{#@#remove this
-##General parameters##
-setwd("C:\\Users\\Kenup\\Dropbox\\03-Trabalho\\01-Science\\01-Artigos sendo Escritos\\Sucesso das Cutias\\GitHub Repo")
-# setwd("K:\\03-Trabalho\\01-Science\\01-Artigos sendo Escritos\\Sucesso das Cutias")
-}		
 ##Importing and formatting data##
 	##Photographic records
-		photos<-read.csv(".\\Data\\Registros Armadilhagem Fotográfica.csv",T)
+		photos<-read.csv(".\\Data\\Photographic Records Subsetted.csv",T)
 	##Capture information
 		captures<-read.csv(".\\Data\\Live Capture Records.csv",header=TRUE)
 	##Individual information
@@ -95,7 +93,7 @@ captures$age[captures$weight.kg >= 2]<-"Adult"
 
 #####
 ##Formatting photographic records
-###Some individuals' marks were not permanent or unambigous. 
+###Some individuals' marks were not permanentstror unambigous. 
 ###hese individuals were considered as 'Unmarked' for the purpose of the analysis
 #####
 unusable.ind<-c("sloth","chico","primo","neguinha","negrinha") #vector of unusable individuals
@@ -169,6 +167,7 @@ trap_hist$interval<-sapply(trap_hist$date, function(x){
 		sp.obj$fst.grid$MPCarea<-gArea(sp.obj$fst.grid$MPC)
 		sp.obj$scd.grid$MPC<-gConvexHull(sp.obj$camera.traps)		
 		sp.obj$scd.grid$MPCarea<-gArea(sp.obj$scd.grid$MPC)
+		
 ####
 ##Formatting individual summary 
 ####
@@ -213,17 +212,3 @@ trap_hist$interval<-sapply(trap_hist$date, function(x){
 	indiv.summ$post.poneds<-post.poneds
 	indiv.summ%<>%
 		dplyr::filter(!is.na(indiv))
-
-#################################
-#####apagar depois!##############
-#################################
-data.protect<-function(x){
-require(dplyr)
-y<-x%>%dplyr::filter(station%in%c('AFV09','AFV12'))%>%
-	dplyr::filter(interval%in%29:30)%>%
-	dplyr::arrange(station,time)
-}
-
-photos%<>%data.protect
-photos.ind%<>%data.protect
-agout.ind%<>%data.protect

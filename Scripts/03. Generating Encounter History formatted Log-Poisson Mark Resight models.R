@@ -1,3 +1,6 @@
+##Author: Caio Kenup#############
+##email: caio.kenup@gmail.com####
+
 ################################################################################	
 ####Generating Encounter History formatted "Log-Poisson Mark Resight" models####
 ################################################################################
@@ -10,6 +13,7 @@
 		dplyr::filter(!is.na(interval))%>%
 		dplyr::group_by(indiv,interval)%>%
 		dplyr::summarise(no=n())
+	class(eh.temp)<-'data.frame'
 	
 	##Filling unexisting combinations of individuals and intervals 
 	existing.combinations<-apply(eh.temp[,1:2],1,paste,collapse=" ")
