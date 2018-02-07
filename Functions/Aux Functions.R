@@ -13,6 +13,9 @@ zero_pad<-function(x,w){
 	require(stringr)
 	y<-str_pad(x, w, side = "left", pad = "0")
 	return(y)}
+
+fix.char<-function(x,enc='UTF-8'){trim(tolower(iconv(as.character(x),from=enc,to='ASCII//TRANSLIT')))}
+
 	
 ###Math
 ##Calculate the inverse of a number
